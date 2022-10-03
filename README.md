@@ -14,13 +14,16 @@ FIRST PAGE
 
 SECOND PAGE
 
-![image](https://user-images.githubusercontent.com/99539310/193551590-fc1c34f1-0f4d-4a5f-a70a-f9f03d1fa291.png)
+![image](https://user-images.githubusercontent.com/99539310/193590457-87082f09-f75d-4c45-8848-109b05c48016.png)
+
 
 THIRD PAGE
 
-![image](https://user-images.githubusercontent.com/99539310/193551896-f54fc6fe-b267-4c2c-afc7-c224ac3da9a0.png)
+![image](https://user-images.githubusercontent.com/99539310/193590568-d45bca7b-83ca-4314-9037-9b59f85e0498.png)
+
 
 FOURTH PAGE
+![image](https://user-images.githubusercontent.com/99539310/193590701-a78d2b99-6fca-4da1-8093-3b653add4411.png)
 
-![image](https://user-images.githubusercontent.com/99539310/193552025-ff6eaacd-108e-4118-a63d-35e91b2032ea.png)
+
 
