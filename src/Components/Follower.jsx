@@ -53,7 +53,7 @@ const Follower = () => {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundColor: "rgb(106 122 114 / 93%)",
+                backgroundColor: "rgb(106 122 114 / 92%)",
                 borderRadius: "8px",
                 cursor: "pointer",
                 height: "200px",
