@@ -9,9 +9,7 @@ const Repo = () => {
   const index = initialData.findIndex((item) => {
     return item.id == id;
   });
-  console.log(initialData[index]);
-  // {initialData[index].description}
-  // console.log(index);
+
   return (
     <div>
       <div>

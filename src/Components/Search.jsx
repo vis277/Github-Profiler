@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { json, useNavigate, useSearchParams } from "react-router-dom";
 import { centralData } from "../App";
 import { initialDetails } from "../App";
 import { follower } from "../App";
+import { getUserRepos, getUserDetail } from "../services/apiMiddleware";
 const Search = () => {
   const contextData = useContext(centralData);
   const { initialData, setInitialData } = contextData;
@@ -25,37 +26,20 @@ const Search = () => {
 
   const [searchParam, setSearchParam] = useSearchParams();
   const userName = searchParam.get("q");
-  // console.log(userName);
+
   const handleInput = (e) => {
     setSerch(e.target.value);
   };
 
-  const handleSearch = () => {
-    async function getDetails() {
-      let result = await fetch(
-        `https://api.github.com/users/${search ? search : userName}/repos`
-      )
-        .then((result) => result.json())
-        .then((data) => {
-          setList([...data]);
+  const handleSearch = async () => {
+    const userDetails = await getUserDetail(search || userName);
+    const userRepos = await getUserRepos(search || userName);
 
-          setInitialData([...data]);
-        });
-    }
-    getDetails();
-
-    async function getUserDetails() {
-      let result = await fetch(
-        `https://api.github.com/users/${search ? search : userName}`
-      )
-        .then((result) => result.json())
-        .then((data) => {
-          setUserData({ ...data });
-          setInitialDetail({ ...data });
-        });
-    }
-    getUserDetails();
+    setInitialData(userRepos);
+    setUserData(userDetails);
     setVisible(true);
+
+    return;
   };
 
   const handleRedirect = (id) => {
@@ -77,34 +61,17 @@ const Search = () => {
   };
 
   useEffect(() => {
-    if (!userName) {
-      return;
-    }
-    async function getDetails() {
-      let result = await fetch(
-        `https://api.github.com/users/${search ? search : userName}/repos`
-      )
-        .then((result) => result.json())
-        .then((data) => {
-          setList([...data]);
+    (async () => {
+      if (!userName) {
+        return;
+      }
+      const userDetails = await getUserDetail(search || userName);
+      const userRepos = await getUserRepos(search || userName);
 
-          setInitialData([...data]);
-        });
-    }
-    getDetails();
-
-    async function getUserDetails() {
-      let result = await fetch(
-        `https://api.github.com/users/${search ? search : userName}`
-      )
-        .then((result) => result.json())
-        .then((data) => {
-          setUserData({ ...data });
-          setInitialDetail({ ...data });
-        });
-    }
-    getUserDetails();
-    setVisible(true);
+      setInitialData(userRepos);
+      setUserData(userDetails);
+      setVisible(true);
+    })();
 
     setSerch(userName);
   }, [userName]);
@@ -120,7 +87,7 @@ const Search = () => {
           height: "6vh",
           outline: "none",
           borderRadius: "8px",
-          fontFamily: "monospace",
+          fontFamily: "sans-serif",
         }}
       ></input>
       <button
@@ -133,7 +100,8 @@ const Search = () => {
           backgroundColor: "coral",
           border: "transparent",
           cursor: "pointer",
-          fontFamily: "monospace",
+          fontFamily: "sans-serif",
+          fontWeight: "700",
         }}
       >
         Search
@@ -157,8 +125,12 @@ const Search = () => {
             style={{ height: "100px", width: "100px", padding: "1em" }}
           />
 
-          <div>{userData.name}</div>
-          <div>{userData.bio}</div>
+          <div style={{ fontSize: "26px", fontWeight: "600", color: "blue" }}>
+            {userData.name}
+          </div>
+          <div style={{ fontSize: "18px", fontWeight: "600" }}>
+            {userData.bio}
+          </div>
           <div>
             <button
               onClick={() => handleFollowers(userData.id)}
@@ -171,6 +143,7 @@ const Search = () => {
                 backgroundColor: "coral",
                 padding: "6px",
                 margin: "4px",
+                fontWeight: "700",
               }}
             >
               Followers
@@ -226,11 +199,12 @@ const Search = () => {
                           margin: "1em",
                           fontWeight: "700",
                           color: "blue",
+                          fontSize: "26px",
                         }}
                       >
                         {item.name}
                       </div>
-                      <div style={{ fontFamily: "monospace" }}>
+                      <div style={{ fontFamily: "sans-serif" }}>
                         {item.description}
                       </div>
                     </div>

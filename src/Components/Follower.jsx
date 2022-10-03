@@ -8,7 +8,7 @@ const Follower = () => {
   const queryData = searcParam.get("q");
   const followerData = useContext(follower);
   const { followers: followerList } = followerData;
-  console.log("ln11", followerList);
+
   const navigate = useNavigate();
 
   const handleClick = (id) => {
@@ -53,9 +53,11 @@ const Follower = () => {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundColor: "#d75555",
+                backgroundColor: "rgb(106 122 114 / 93%)",
                 borderRadius: "8px",
                 cursor: "pointer",
+                height: "200px",
+                width: "200px",
               }}
               onClick={() => handleClick(item.login)}
             >
