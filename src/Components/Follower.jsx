@@ -26,7 +26,7 @@ const Follower = () => {
             textDecoration: "none",
             color: "white",
             backgroundColor: "green",
-            padding: "4px",
+            padding: "8px",
             cursor: "pointer",
             borderRadius: "6px",
           }}
@@ -39,7 +39,7 @@ const Follower = () => {
         style={{
           display: "flex",
           flexWrap: "wrap",
-          gap: "3em",
+          gap: "22px",
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -58,6 +58,7 @@ const Follower = () => {
                 cursor: "pointer",
                 height: "200px",
                 width: "200px",
+                color: "white",
               }}
               onClick={() => handleClick(item.login)}
             >

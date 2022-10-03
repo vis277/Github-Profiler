@@ -117,6 +117,7 @@ const Search = () => {
             flexDirection: "column",
             gap: "1em",
             borderRadius: "24px",
+            padding: "16px",
           }}
         >
           <img
@@ -158,7 +159,6 @@ const Search = () => {
           display: "flex",
           gap: "2em",
           flexWrap: "wrap",
-          backgroundColor: "#c0c0c02b",
         }}
       >
         {visible
@@ -180,7 +180,11 @@ const Search = () => {
                       display: "flex",
                       justifyContent: "flex-start",
                       alignItems: "center",
-                      borderRadius: "50%",
+                      borderRadius: "60px",
+                      padding: "20px",
+                      backgroundColor: "rgba(192, 192, 192, 0.17)",
+                      height: "160px",
+                      width: "100%",
                     }}
                   >
                     <div>

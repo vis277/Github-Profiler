@@ -19,7 +19,7 @@ const Repo = () => {
             textDecoration: "none",
             color: "white",
             backgroundColor: "green",
-            padding: "4px",
+            padding: "8px",
             cursor: "pointer",
             borderRadius: "6px",
           }}
@@ -29,21 +29,33 @@ const Repo = () => {
       </div>
       <div style={{ display: "flex", gap: "3em", alignItems: "center" }}>
         <div>
-          <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+            }}
+          >
             <img
               src={initialData[index].owner.avatar_url}
               alt="Loading"
               style={{ height: "100px", width: "100px" }}
             />
           </div>
-          <p style={{ fontWeight: "800", fontFamily: "sans-serif" }}>
+          <p
+            style={{
+              fontWeight: "800",
+              fontFamily: "sans-serif",
+              textAlign: "initial",
+            }}
+          >
             Verified by Github
           </p>
           <p style={{ fontFamily: "sans-serif" }}>
             GitHub confirms that this app meets the requirement for verification
           </p>
         </div>
-        <div>
+        <div style={{ textAlign: "start" }}>
           <p style={{ fontWeight: "800", fontFamily: "sans-serif" }}>
             Application
           </p>
